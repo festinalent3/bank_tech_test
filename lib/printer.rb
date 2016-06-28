@@ -9,11 +9,13 @@ class Printer
   end
 
   def print_credit(object)
-    object.value.to_s if object.type == :credit
+    return object.value.to_s if object.type == :credit
+    ""
   end
 
   def print_debit(object)
-    (object.value.abs).to_s if object.type == :debit
+    return (object.value.abs).to_s if object.type == :debit
+    ""
   end
 
 end

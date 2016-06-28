@@ -8,17 +8,30 @@ describe Printer do
   let(:history) { [transaction1, transaction2, transaction3]}
   let(:subject) { described_class.new(history) }
 
-  it 'formates the date correctly' do
-    expect(subject.print_date(transaction1)).to eq '10/01/2012'
+  describe '#print_date' do
+    it 'formates the date correctly' do
+      expect(subject.print_date(transaction1)).to eq '10/01/2012'
+    end
   end
 
+  describe '#print_credit' do
+    it 'prints the positive value if the transaction is of type credit' do
+      expect(subject.print_credit(transaction1)).to eq '1000'
+    end
 
-  it 'prints the positive value if the transaction is of type credit' do
-    expect(subject.print_credit(transaction1)).to eq '1000'
+    it 'does not print the value if the transaction is of type debit' do
+      expect(subject.print_credit(transaction3)).to eq ""
+    end
   end
 
-  it 'prints the negative value as positive if the transaction is of type debit' do
-    expect(subject.print_debit(transaction3)).to eq '500'
+  describe '#print_debit' do
+    it 'prints the negative value as positive if the transaction is of type debit' do
+      expect(subject.print_debit(transaction3)).to eq '500'
+    end
+
+    it 'does not print the value if the transaction is of type credit' do
+      expect(subject.print_debit(transaction1)).to eq ""
+    end
   end
 
 end
