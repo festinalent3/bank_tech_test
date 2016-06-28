@@ -1,9 +1,11 @@
 require 'printer'
 
 describe Printer do
-  let(:transaction1) { double(:transaction, value: 1000, type: :credit, time: Time.local(2012,1,10))}
-  let(:transaction2) { double(:transaction, value: 2000, type: :credit, time: Time.local(2012,1,13))}
-  let(:transaction3) { double(:neg_transaction, value: -500, type: :debit, time: Time.local(2012,1,14))}
+  let(:transaction1) { double(:transaction, getValue: 1000, getType: :credit, getDate: Time.local(2012,1,10))}
+  let(:transaction2) { double(:transaction, getValue: 2000, getType: :credit, getDate: Time.local(2012,1,13))}
+  let(:transaction3) { double(:neg_transaction, getValue: -500, getType: :debit, getDate: Time.local(2012,1,14))}
+  let(:transaction4) { double(:neg_transaction, getValue: -500, getType: :debit, getDate: Time.local(2012,1,15))}
+
   let(:balance)  { 2500 }
 
   let(:history) { [transaction1, transaction2, transaction3]}
@@ -42,6 +44,16 @@ describe Printer do
 
       n = 2
       expect(subject.print_balance(n)).to eq " 500.00 "
+    end
+  end
+
+  describe '#update' do
+    it 'updates the info to be printed' do
+      history.push(transaction4)
+      new_balance = "2000.00"
+      subject.update(history, new_balance)
+      n = 3
+      expect(subject.print_balance(0)).to eq " #{new_balance} "
     end
   end
 

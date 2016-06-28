@@ -1,3 +1,5 @@
+require_relative 'transaction'
+
 class Account
 
   MAX_DEPOSIT = 9999.00
