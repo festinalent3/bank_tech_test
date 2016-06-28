@@ -14,4 +14,8 @@ class Account
     @balance += sum unless sum > MAX_DEPOSIT
   end
 
+  def withdraw(sum)
+    @balance -= sum unless (@balance - sum) < 0
+  end
+
 end
