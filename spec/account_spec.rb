@@ -8,11 +8,21 @@ describe Account do
     expect(subject.getBalance).to eq 0
   end
 
+  it 'initializes with an empty history' do
+    expect(subject.getHistory).to eq []
+  end
+
+
   describe '#deposit' do
 
     it 'increases the balance of the account' do
       subject.deposit(oneThousand)
       expect(subject.getBalance).to eq oneThousand
+    end
+
+    it 'adds the transaction to the account history' do
+      subject.deposit(oneThousand)
+      expect(subject.getHistory.length).to eq 1
     end
 
     it 'does not allow the user to deposit more than 10,000 at once' do
@@ -28,6 +38,12 @@ describe Account do
       subject.deposit(oneThousand)
       subject.withdraw(oneThousand)
       expect(subject.getBalance).to eq 0
+    end
+
+    it 'adds the transaction to the account history' do
+      subject.deposit(oneThousand)
+      subject.withdraw(oneThousand)
+      expect(subject.getHistory.length).to eq 2
     end
 
     it 'does not allow the user to withdraw money if balance = 0' do
