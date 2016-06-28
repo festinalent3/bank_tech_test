@@ -16,9 +16,9 @@ describe Transaction do
     end
 
     it 'saves the current time' do
-      mocked_time = Time.local(2012,1,10)
-      allow(Time).to receive(:now).and_return(mocked_time)
-      expect(subject.getTime).to eq mocked_time
+      mocked_date = Time.local(2012,1,10)
+      allow(Time).to receive(:now).and_return(mocked_date)
+      expect(subject.getDate).to eq mocked_date
     end
 
 

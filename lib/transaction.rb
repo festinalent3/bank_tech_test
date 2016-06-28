@@ -2,7 +2,7 @@ class Transaction
 
   def initialize(value)
     @value = value
-    @time = Time.now
+    @date = Time.now
     @type = value > 0 ? :credit : :debit
   end
 
@@ -10,8 +10,8 @@ class Transaction
     @value
   end
 
-  def getTime
-    @time
+  def getDate
+    @date
   end
 
   def getType
