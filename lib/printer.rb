@@ -9,8 +9,8 @@ class Printer
   def print_table
     n = 0
     puts "   date  " + "   ||   " + "credit" + "    ||   " + "debit" + "    ||   " + "balance"
-    @to_print.each do | object |
-      puts print_date(object) + "  ||  " + print_credit(object) + "  ||  " + print_debit(object) + "  ||  " + print_balance(n)
+    @to_print.each_with_index do | object, i |
+      puts print_date(object) + "  ||  " + print_credit(object) + "  ||  " + print_debit(object) + "  ||  " + print_balance(i)
       n += 1
     end
   end
