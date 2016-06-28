@@ -1,9 +1,9 @@
 class Account
 
-  MAX_DEPOSIT = 10000
+  MAX_DEPOSIT = 10000.00
 
   def initialize
-    @balance = 0
+    @balance = 0.00
   end
 
   def getBalance

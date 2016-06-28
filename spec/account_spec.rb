@@ -1,7 +1,7 @@
 require 'account'
 
 describe Account do
-  let(:subject) { Account.new }
+  let(:subject) { described_class.new }
   let(:oneThousand) { 1000 }
 
   it 'initializes with a balance of 0' do
