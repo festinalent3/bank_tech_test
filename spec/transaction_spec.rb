@@ -7,6 +7,7 @@ describe Transaction do
 
 
   describe '#initialize' do
+
     it 'can initialize with a given positive value' do
       expect(subject.getValue).to eq oneThousand
     end
