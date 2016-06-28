@@ -5,7 +5,7 @@
 
 This is a small repo containing a solution to [this](https://github.com/makersacademy/bank_tech_test) formidable tech test.
 
-There is also a WIP [rails](https://github.com/festinalent3/bank_tech_test_rails_edition) edition as I thought it would be fun to make it a web application.
+There is also a **WIP** [rails](https://github.com/festinalent3/bank_tech_test_rails_edition) edition as I thought it would be fun to make it a web application.
 
 ### How to install
 
