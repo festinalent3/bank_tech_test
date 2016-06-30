@@ -28,23 +28,23 @@ class Printer
   end
 
   def print_date(object)
-    object.getDate.strftime("%d/%m/%Y")
+    object.date.strftime("%d/%m/%Y")
   end
 
   def print_credit(object)
-    return " " + ('%.2f' % object.getValue) + " " if object.getType == :credit
+    return " " + ('%.2f' % object.value) + " " if object.type == :credit
     "         "
   end
 
   def print_debit(object)
-    return " " + ('%.2f' % object.getValue.abs) + " " if object.getType == :debit
+    return " " + ('%.2f' % object.value.abs) + " " if object.type == :debit
     "        "
   end
 
   def print_balance(n)
     if n > -1
-      @balance = @balance - @to_print[n].getValue if @to_print[n].getType == :credit
-      @balance = @balance + @to_print[n].getValue if @to_print[n].getType == :debit
+      @balance = @balance - @to_print[n].value if @to_print[n].type == :credit
+      @balance = @balance + @to_print[n].value if @to_print[n].type == :debit
     end
     " " + "#{'%.2f' % (@balance) }" + " "
   end

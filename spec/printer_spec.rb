@@ -1,9 +1,9 @@
 require 'printer'
 
 describe Printer do
-  let(:transaction1) { double(:transaction, getValue: 1000, getType: :credit, getDate: Time.local(2012,1,10))}
-  let(:transaction2) { double(:transaction, getValue: 2000, getType: :credit, getDate: Time.local(2012,1,13))}
-  let(:transaction3) { double(:neg_transaction, getValue: 500, getType: :debit, getDate: Time.local(2012,1,14))}
+  let(:transaction1) { double(:transaction, value: 1000, type: :credit, date: Time.local(2012,1,10))}
+  let(:transaction2) { double(:transaction, value: 2000, type: :credit, date: Time.local(2012,1,13))}
+  let(:transaction3) { double(:neg_transaction, value: 500, type: :debit, date: Time.local(2012,1,14))}
 
   let(:balance)  { 2500 }
 

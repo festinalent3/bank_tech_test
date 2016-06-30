@@ -47,7 +47,7 @@ The program consists of 3 classes. The account class acts as the interface towar
 10/01/2012  ||   1000.00   ||            ||   1000.00
 ```
 
-(Dates provided in the tests (rspec) matches those specified in the instructions)
+(Output dates as specified in the tests (rspec))
 
 Some irb examples:
 
