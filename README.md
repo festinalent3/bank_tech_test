@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/festinalent3/bank_tech_test.svg?branch=master)](https://travis-ci.org/festinalent3/bank_tech_test)
-
-# bank_tech_test WIP
+[![Coverage Status](https://coveralls.io/repos/github/festinalent3/bank_tech_test/badge.svg?branch=master)](https://coveralls.io/github/festinalent3/bank_tech_test?branch=master)
+# Bank tech test
 
 
 This is a small repo containing a solution to [this](https://github.com/makersacademy/bank_tech_test) formidable tech test.
