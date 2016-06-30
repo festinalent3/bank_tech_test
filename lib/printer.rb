@@ -10,10 +10,7 @@ class Printer
 
   def statement
     update_account_info
-    puts "   date  " + "   ||   " + "credit" + "    ||   " + "debit" + "    ||   " + "balance"
-    @to_print.each_with_index do | object, i |
-      puts print_date(object) + "  ||  " + print_credit(object) + "  ||  " + print_debit(object) + "  ||  " + print_balance(i)
-    end
+    format_statement
   end
 
   private
@@ -27,23 +24,31 @@ class Printer
     @to_print = @account.history.reverse
   end
 
-  def print_date(object)
+  def format_statement
+    string = "   date  " + "   ||   " + "credit" + "    ||   " + "debit" + "    ||   " + "balance" + "\n"
+    @to_print.each_with_index do | object, i |
+      string += format_date(object) + "  ||  " + format_credit(object) + "  ||  " + format_debit(object) + "  ||  " + format_balance(i)
+    end
+    string
+  end
+
+  def format_date(object)
     object.date.strftime("%d/%m/%Y")
   end
 
-  def print_credit(object)
+  def format_credit(object)
     return " " + ('%.2f' % object.value) + " " if object.type == :credit
     "         "
   end
 
-  def print_debit(object)
+  def format_debit(object)
     return " " + ('%.2f' % object.value.abs) + " " if object.type == :debit
     "        "
   end
 
-  def print_balance(n)
+  def format_balance(n)
     @balance = @balance - @to_print[n-1].value unless n < 1
-    " " + "#{'%.2f' % (@balance) }" + " "
+    " " + "#{'%.2f' % (@balance) }" + " " + + "\n"
   end
 
 end

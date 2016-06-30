@@ -67,6 +67,6 @@ $ account.withdraw(17.50)
 
 # Get an account statement, need to instantiate Printer using the class method create the first time
 $ Printer.create(account)
-$ Printer.instance.statement
+$ p Printer.instance.statement
 
 ```
