@@ -26,7 +26,7 @@ class Account
 
   def withdraw(sum)
     unless (@balance - sum) < 0
-      @history.push(Transaction.new(sum * -1))
+      @history.push(Transaction.new(sum))
       @balance -= sum
     end
   end

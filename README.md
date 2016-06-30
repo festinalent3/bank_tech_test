@@ -42,12 +42,12 @@ The program consists of 3 classes. The account class acts as the interface towar
 
 ```
    date     ||   credit    ||   debit    ||   balance
-28/06/2016  ||             ||   500.00   ||   2500.00
-28/06/2016  ||   2000.00   ||            ||   3000.00
-28/06/2016  ||   1000.00   ||            ||   1000.00
+14/01/2012  ||             ||   500.00   ||   2500.00
+13/01/2012  ||   2000.00   ||            ||   3000.00
+10/01/2012  ||   1000.00   ||            ||   1000.00
 ```
 
-(Dates provided in the tests (rspec) matches those specified in the instructions) 
+(Dates provided in the tests (rspec) matches those specified in the instructions)
 
 Some irb examples:
 
@@ -65,11 +65,8 @@ $ account.deposit(23.50)
 # withdraw some money
 $ account.withdraw(17.50)
 
-# Get an account statement
-$ printer = Printer.new(account.getHistory, account.getBalance)
-$ printer.print_table
-
-# Update the information for the printer
-$ printer.update(account.getHistory, account.getBalance)
+# Get an account statement, need to instantiate Printer using the class method create the first time
+$ Printer.create(account)
+$ Printer.instance.statement
 
 ```

@@ -1,16 +1,30 @@
 class Printer
 
-  def initialize(to_print, balance)
-    @to_print = to_print.reverse
-    @duplicate = @to_print.dup
-    @balance = balance
+  def self.create(account)
+    @instance = Printer.new(account)
   end
 
-  def print_table
+  def self.instance
+    @instance
+  end
+
+  def statement
+    update_account_info
     puts "   date  " + "   ||   " + "credit" + "    ||   " + "debit" + "    ||   " + "balance"
     @to_print.each_with_index do | object, i |
-      puts print_date(object) + "  ||  " + print_credit(object) + "  ||  " + print_debit(object) + "  ||  " + print_balance(i)
+      puts print_date(object) + "  ||  " + print_credit(object) + "  ||  " + print_debit(object) + "  ||  " + print_balance(i-1)
     end
+  end
+
+  private
+
+  def initialize(account)
+    @account = account
+  end
+
+  def update_account_info
+    @balance = @account.getBalance
+    @to_print = @account.getHistory.reverse
   end
 
   def print_date(object)
@@ -28,14 +42,11 @@ class Printer
   end
 
   def print_balance(n)
-     @balance -= @duplicate[n-1].getValue unless n == 0
-    " " + "#{'%.2f' % @balance}" + " "
-  end
-
-  def update(to_print, balance)
-    @to_print = to_print.reverse
-    @duplicate = @to_print.dup
-    @balance = balance
+    if n > -1
+      @balance = @balance - @to_print[n].getValue if @to_print[n].getType == :credit
+      @balance = @balance + @to_print[n].getValue if @to_print[n].getType == :debit
+    end
+    " " + "#{'%.2f' % (@balance) }" + " "
   end
 
 end
