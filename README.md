@@ -37,7 +37,7 @@ $ rspec
     └── transaction_spec.rb
 ```
 
-The program consists of 3 classes. The account class acts as the interface towards the user, the Transaction class handles and classifies transactions and the Printer class prints account statements like this one:
+The program consists of 3 classes. The account class acts as the interface towards the user, the Transaction class handles and classifies transactions and the Printer class creates account statements like this one:
 
 ```
       date   ||    credit   ||     debit   ||   balance
