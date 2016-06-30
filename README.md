@@ -26,7 +26,6 @@ $ rspec
 ├── Gemfile
 ├── Gemfile.lock
 ├── README.md
-├── coverage
 ├── lib
 │   ├── account.rb
 │   ├── printer.rb
@@ -41,10 +40,10 @@ $ rspec
 The program consists of 3 classes. The account class acts as the interface towards the user, the Transaction class handles and classifies transactions and the Printer class prints account statements like this one:
 
 ```
-   date     ||   credit    ||   debit    ||   balance
-14/01/2012  ||             ||   500.00   ||   2500.00
-13/01/2012  ||   2000.00   ||            ||   3000.00
-10/01/2012  ||   1000.00   ||            ||   1000.00
+      date   ||    credit   ||     debit   ||   balance
+14/01/2012   ||             ||    500.00   ||   2500.00
+13/01/2012   ||   2000.00   ||             ||   3000.00
+10/01/2012   ||   1000.00   ||             ||   1000.00
 ```
 
 (Output dates as specified in the tests (rspec))
@@ -54,19 +53,20 @@ Some irb examples:
 ```
 $ irb
 $ require './lib/account.rb'
-$ require './lib/printer.rb'
 
 # create a new account
 $ account = Account.new
 
 # deposit some money
-$ account.deposit(23.50)
+$ account.deposit(1000)
+
+# deposit some more money
+$ account.deposit(2000)
 
 # withdraw some money
-$ account.withdraw(17.50)
+$ account.withdraw(500)
 
-# Get an account statement, need to instantiate Printer using the class method create the first time
-$ Printer.create(account)
-$ p Printer.instance.statement
+# Get an account statement
+$ print account.print_statement
 
 ```

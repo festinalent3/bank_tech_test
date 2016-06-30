@@ -1,4 +1,6 @@
 require_relative 'transaction'
+require_relative 'printer'
+
 
 class Account
   attr_reader :balance, :history
@@ -6,6 +8,7 @@ class Account
   MAX_DEPOSIT = 9999.00
 
   def initialize
+    @printer = Printer.new
     @balance = 0.00
     @history = []
   end
@@ -22,6 +25,10 @@ class Account
       @history.push(Transaction.new(sum * -1))
       @balance -= sum
     end
+  end
+
+  def print_statement
+    @printer.statement(self)
   end
 
 end

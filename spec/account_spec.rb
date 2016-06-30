@@ -56,4 +56,10 @@ describe Account do
       expect(subject.balance).to eq 0
     end
   end
+  describe '#print_statement' do
+
+    it 'returns a string contnainting the account statement' do
+      expect(subject.print_statement).to be_a String
+    end
+  end
 end

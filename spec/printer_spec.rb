@@ -10,10 +10,11 @@ describe Printer do
   let(:history) { [transaction1, transaction2, transaction3]}
   let(:account) { double(:account, history: history, balance: balance)}
 
+  let(:subject) { described_class.new}
+
   describe '#statement' do
     it 'prints a table with the account history' do
-      Printer.create(account)
-      table = Printer.instance.statement
+      table = subject.statement(account)
       print table
 
       expect(table).to include( transaction1.value.to_s)
@@ -24,6 +25,7 @@ describe Printer do
       expect(table).to include(transaction2.date.strftime("%d/%m/%Y"))
 
       expect(table).to include( balance.to_s)
+
     end
   end
 
